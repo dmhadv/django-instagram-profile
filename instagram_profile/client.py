@@ -48,6 +48,8 @@ def get_media_feed(access_token):
                     if data:
                         post['children'].append(data)
             posts.append(post)
+    else:
+        raise requests.HTTPError(json.loads(res.text)['error']['message'])
 
     return posts
 
